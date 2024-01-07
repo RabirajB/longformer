@@ -6,7 +6,7 @@ import torch.nn.functional as F
 from longformer.diagonaled_mm_tvm import diagonaled_mm as diagonaled_mm_tvm, mask_invalid_locations
 from longformer.sliding_chunks import sliding_chunks_matmul_qk, sliding_chunks_matmul_pv
 from longformer.sliding_chunks import sliding_chunks_no_overlap_matmul_qk, sliding_chunks_no_overlap_matmul_pv
-from transformers.modeling_roberta import RobertaConfig, RobertaModel, RobertaForMaskedLM
+from transformers import RobertaConfig, RobertaModel, RobertaForMaskedLM 
 
 
 class Longformer(RobertaModel):
@@ -101,7 +101,7 @@ class LongformerSelfAttention(nn.Module):
             +ve: global attention
         '''
         assert encoder_hidden_states is None, "`encoder_hidden_states` is not supported and should be None"
-        assert encoder_attention_mask is None, "`encoder_attention_mask` is not supported and shiould be None"
+        assert encoder_attention_mask is None, "`encoder_attention_mask` is not supported and should be None"
 
         if attention_mask is not None:
             attention_mask = attention_mask.squeeze(dim=2).squeeze(dim=1)
